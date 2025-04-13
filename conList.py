@@ -88,6 +88,10 @@ def data_quality_report(df_before, df_after):
         print(f"\n📋 Data Quality Summary: {label}")
         print(f"→ Shape: {df.shape[0]} rows × {df.shape[1]} columns")
 
+        # Overall missing value count
+        total_missing = df.isna().sum().sum()
+        print(f"→ Total missing values: {total_missing}")
+
         # 1. Missing fields
         missing = df.isna().sum()
         missing = missing[missing > 0]
@@ -102,12 +106,12 @@ def data_quality_report(df_before, df_after):
         duplicate_count = df.duplicated().sum()
         print(f"→ Duplicate rows: {duplicate_count}")
 
-        # 3. Blank or unnamed entries (optional key column checks)
+        # 3. Blank or unnamed entries 
         if 'Full Name' in df.columns:
             blank_names = df['Full Name'].apply(lambda x: str(x).strip() == '').sum()
             print(f"→ Blank 'Full Name' entries: {blank_names}")
 
-        # 4. DOB format check (if applicable)
+        # 4. DOB format check 
         if 'DOB' in df.columns:
             suspicious_dobs = df['DOB'].apply(lambda x: isinstance(x, str) and ('00' in x or len(x) < 8)).sum()
             print(f"→ Suspected invalid DOBs: {suspicious_dobs}")
