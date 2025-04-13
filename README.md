@@ -60,3 +60,15 @@ python -m venv venv
 env\Scripts\activate
 pip install -r requirements.txt
 ```
+
+### 4. Run the script
+From the root directory, run:
+```bash
+python conList.py
+```
+
+### 5. Output
+The cleaned dataset will be save d to:
+```bash
+data/output/sanctions_cleaned.csv
+```
