@@ -10,6 +10,9 @@ def load_data(file_path):
 def load_countries(file_path):
     with open(file_path, 'r', encoding='utf-8-sig') as file:
         return [line.strip() for line in file if line.strip()]
+    
+def remove_duplicates(df):
+    return df.drop_duplicates(keep='first')
 
 # Create 'Full Name' from name parts
 def create_full_name(df):
@@ -140,7 +143,6 @@ def save_data(df, output_file):
 def main():
     # Load data
     df = load_data('Sanctions-Assignment/data/raw/ConList.csv')
-    df = df.drop_duplicates(keep='first')
 
     df_original = df.copy()
 
@@ -158,11 +160,6 @@ def main():
     df = map_associated_countries(df, countries)
     df = create_full_address(df)
 
-    # Preview rows with multiple countries
-    print("\n Rows with multiple associated countries:")
-    multi_country_rows = df[df['Associated Countries'].notna() & df['Associated Countries'].str.contains(',')]
-    print(multi_country_rows[['Full Name', 'Associated Countries']].head(10))
-
     # Final selection of columns
     columns_to_keep = [
         'Full Name', 'DOB', 'Town of Birth', 'Associated Countries',
@@ -170,15 +167,18 @@ def main():
         'Full Address', 'Other Information', 'Group Type', 'Group ID'
     ]
     df_cleaned = df[columns_to_keep]
+    df_cleaned = remove_duplicates(df_cleaned)
 
     # Preview cleaned output
     print("\n Final cleaned data sample:")
     print(df_cleaned.head(20))
 
+    # Data quality report
+    data_quality_report(df_original, df_cleaned)
+
     save_data(df_cleaned, "Sanctions-Assignment/data/output/sanctions_cleaned.csv")
     print("Cleaned data saved to: Sanctions-Assignment/data/output/sanctions.csv")
 
-    data_quality_report(df_original, df_cleaned)
 
 
 
