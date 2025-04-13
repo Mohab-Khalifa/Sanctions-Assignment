@@ -67,7 +67,7 @@ From the root directory, run:
 python conList.py
 ```
 
-## 4. Output
+### 4. Output
 The cleaned dataset will be saved to:
 
 ```bash
