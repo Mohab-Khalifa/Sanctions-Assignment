@@ -36,40 +36,27 @@ The script reports issues such as:
 - Suspected invalid DOBs (containing "00")
 - Fields with non-English (non-ASCII) characters
 
-## 🚀 How to Run
+## 🚀 Setup 
 
-### 1. Make sure you have Python 3 and pandas installed:
+### 1. Clone 
 
-Check Python version:
 ```bash
-python --version
-
-pip install pandas
+git clone https://github.com/Mohab-Khalifa/Sanctions-Assignment.git
 ```
 
-### 2. Set up project structure
-Ensure the following file structure exists:
+### 2. cd into the project folder
 
+### 3. Create a virtual environment, activate it and then install dependencies
+On macOS and Linux
 ```bash
-Sanctions-Assignment/
-├── conList.py                  # Main script
-├── data/
-│   ├── raw/
-│   │   └── ConList.csv         # Raw UK sanctions list
-│   └── countries.txt           # List of countries (1 per line)
-├── data/output/                # (Created automatically for results)
-├── README.md
+python -m venv venv
+source env/bin/activate
+pip install -r requirements.txt
 ```
 
-### 3. Run the script
-From the root directory, run:
+On Windows
 ```bash
-python conList.py
-```
-
-### 4. Output
-The cleaned dataset will be saved to:
-
-```bash
-data/output/sanctions_cleaned.csv
+python -m venv venv
+env\Scripts\activate
+pip install -r requirements.txt
 ```
