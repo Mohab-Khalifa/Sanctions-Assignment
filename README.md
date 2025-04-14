@@ -1,5 +1,5 @@
 # Sanctions-Assignment
-## ⚙️ What It Does
+## What It Does
 
 - Cleans non-English characters from the dataset.
 - Combines name columns into a single Full Name.
@@ -11,7 +11,7 @@
 
 ---
 
-## 🧪 Columns Retained in Final Output
+## Columns Retained in Final Output
 
 - Full Name  
 - DOB  
@@ -27,7 +27,7 @@
 
 ---
 
-## 🧼 Data Quality Checks
+## Data Quality Checks
 
 The script reports issues such as:
 
@@ -36,7 +36,7 @@ The script reports issues such as:
 - Suspected invalid DOBs (containing "00")
 - Fields with non-English (non-ASCII) characters
 
-## 🚀 Setup 
+## Setup 
 
 ### 1. Clone 
 
